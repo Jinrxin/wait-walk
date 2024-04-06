@@ -49,11 +49,13 @@ Component({
         // Do something when catch error
       }
     },
-    // 点击
-    chooseNav(event: WechatMiniprogram.TouchEvent<{ index: number }>) {
+
+    // 子组件中的某个事件，当需要传递数据给父组件时触发该事件
+    triggerPageChange(event: WechatMiniprogram.TouchEvent<{ index: number }>) {
+      // 通过 triggerEvent 触发自定义事件，传递数据给父组件
       const index = event.currentTarget.dataset.index;
-      console.log('按钮' + index + '被点击了');
-    },
+      this.triggerEvent('pageChange', { data: index  });
+    }
   },
 
   lifetimes: {

@@ -17,6 +17,14 @@ Page({
     // },
   },
 
+  pageChange(event: any) {
+    const dataFromChild = event.detail.data;
+    console.log(dataFromChild);
+    this.setData({
+      index: dataFromChild
+    })
+  },
+
 
 
   /**
