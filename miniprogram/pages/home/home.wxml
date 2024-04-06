@@ -1,0 +1,5 @@
+<!--pages/home/home.wxml-->
+<navigation-bar title="等你走过的路" back="{{true}}" color="black" background="#FFF" home-button="{{false}}"></navigation-bar>
+<view>
+  <home-bar></home-bar>
+</view>
