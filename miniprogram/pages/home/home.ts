@@ -23,7 +23,7 @@ Page({
     this.setData({
       index: dataFromChild
     })
-  },
+  }, 
 
 
 
