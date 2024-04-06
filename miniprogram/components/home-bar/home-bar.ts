@@ -7,6 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    index: {
+      type: Number,
+      value: 0
+    }
   },
 
   /**
@@ -25,13 +29,13 @@ Component({
       width: 0
     },
     lineStyle: '',
-    lineWrapperStyle: ''
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    // 初始化信息
     tanInit() {
       try {
         const res = wx.getSystemInfoSync()
@@ -39,13 +43,17 @@ Component({
           winRect: {
             width: Number(res.windowWidth.toFixed(2))
           },
-          lineStyle: `width: ${res.windowWidth / this.data.navList.length * 0.60}px; background: black;`,
-          lineWrapperStyle: `width: ${(res.windowWidth / this.data.navList.length).toFixed(2)}px; `
+          lineStyle: `width: ${res.windowWidth / this.data.navList.length * 0.60}px; background: black;`
         })
       } catch (e) {
         // Do something when catch error
       }
-    }
+    },
+    // 点击
+    chooseNav(event: WechatMiniprogram.TouchEvent<{ index: number }>) {
+      const index = event.currentTarget.dataset.index;
+      console.log('按钮' + index + '被点击了');
+    },
   },
 
   lifetimes: {
