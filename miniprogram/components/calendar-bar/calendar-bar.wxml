@@ -4,12 +4,12 @@
   <view class="home-bar__swiper">
     <block wx:for="{{navList}}" wx:key="index">
       <view class="swiper-item" bindtap="triggerCalenderChange" data-index="{{ index }}">
-        <text class="swiper-item__title"> {{ item.name }} </text>
+        <text class="swiper-item__title {{ index === activeIndex ? 'active' : '' }}"> {{ item.name }} </text>
       </view>
     </block>
   </view>
   <!-- 提示线 -->
-  <view class="home-bar__line" style=" width: {{ winRect.width / navList.length }}px; transform: translateX({{ winRect.width / navList.length * (index || 0)}}px) ">
+  <view class="home-bar__line" style=" width: {{ winRect.width / navList.length }}px; transform: translateX({{ winRect.width / navList.length * (activeIndex || 0)}}px) ">
     <view class="line" style="{{ lineStyle }}"></view>
   </view>
 </view>

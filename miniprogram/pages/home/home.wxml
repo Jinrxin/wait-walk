@@ -8,6 +8,6 @@
   </view>
   <!-- 日期导航 -->
   <view class="bangumi-calendar__navigation">
-    <calendar-bar index="{{ index }}" bind:calendarChange="calendarChange"></calendar-bar>
+    <calendar-bar active-index="{{ activeIndex }}" bind:calendarChange="calendarChange"></calendar-bar>
   </view>
 </view>

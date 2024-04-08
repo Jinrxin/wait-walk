@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index: 0,
+    activeIndex: 0,
   },
 
   /**
@@ -13,9 +13,8 @@ Page({
    */
   calendarChange(event: any) {
     const dataFromChild = event.detail.data;
-    console.log(dataFromChild);
     this.setData({
-      index: dataFromChild,
+      activeIndex: dataFromChild,
     });
   },
 
