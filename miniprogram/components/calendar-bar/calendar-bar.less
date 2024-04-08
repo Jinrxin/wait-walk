@@ -1,8 +1,10 @@
 /* components/home-bar/home-bar.wxss */
 .home-bar {
+  --height: 50px;
+
   position: relative;
   width: 100%;
-  height: 40px;
+  height: var(--height);
   background-color: aliceblue;
 
   &__swiper {
@@ -17,8 +19,8 @@
       &__title {
         display: block;
         width: 80%;
-        height: 40px;
-        line-height: 40px;
+        height: var(--height);
+        line-height: var(--height);
         font-size: 16px;
         margin: auto;
       }
@@ -27,8 +29,8 @@
 
   &__line {
     position: absolute;
-    bottom: 6px;
-    height: 3px;
+    bottom: 0px;
+    height: 2px;
     transition: transform 0.1s;
 
     .line {

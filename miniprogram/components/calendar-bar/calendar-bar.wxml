@@ -3,7 +3,7 @@
   <!-- 导航列表 -->
   <view class="home-bar__swiper">
     <block wx:for="{{navList}}" wx:key="index">
-      <view class="swiper-item" bindtap="triggerPageChange" data-index="{{ index }}">
+      <view class="swiper-item" bindtap="triggerCalenderChange" data-index="{{ index }}">
         <text class="swiper-item__title"> {{ item.name }} </text>
       </view>
     </block>

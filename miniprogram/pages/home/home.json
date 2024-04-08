@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "calendar-bar": "/components/calendar-bar/calendar-bar",
+    "second-nav-bar": "/components/second-nav-bar/second-nav-bar",
     "navigation-bar": "/components/navigation-bar/navigation-bar"
   }
 }
