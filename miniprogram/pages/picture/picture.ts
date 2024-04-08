@@ -5,8 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    index: 0
   },
+
+  // methods: {
+  goPage: function () {
+    console.log(123123);
+    this.setData({
+      index: 3
+    })
+    // },
+  },
+
+  pageChange(event: any) {
+    const dataFromChild = event.detail.data;
+    console.log(dataFromChild);
+    this.setData({
+      index: dataFromChild
+    })
+  }, 
+
+
 
   /**
    * 生命周期函数--监听页面加载

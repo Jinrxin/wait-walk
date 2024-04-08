@@ -1,49 +1,26 @@
-<view class="weui-navigation-bar {{extClass}}">
-  <view class="weui-navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="color: {{color}}; background: {{background}}; {{displayStyle}}; {{innerPaddingRight}}; {{safeAreaTop}}">
+<!-- 顶部导航栏 -->
+<view class="bangumi-navigation-bar">
+  <view class="bangumi-navigation-bar__inner" style="color: {{color}}; background: {{background}}; {{displayStyle}};{{innerWidth}}; {{innerPaddingRight}}; {{safeAreaTop}}">
 
     <!-- 左侧按钮 -->
-    <view class='weui-navigation-bar__left' style="{{leftWidth}}">
-      <block wx:if="{{back || homeButton}}">
-        <!-- 返回上一页 -->
-        <block wx:if="{{back}}">
-          <view class="weui-navigation-bar__buttons weui-navigation-bar__buttons_goback">
-            <view bindtap="back" class="weui-navigation-bar__btn_goback_wrapper" hover-class="weui-active" hover-stay-time="100" aria-role="button" aria-label="返回">
-              <view class="weui-navigation-bar__button weui-navigation-bar__btn_goback"></view>
-            </view>
-          </view>
-        </block>
-        <!-- 返回首页 -->
-        <block wx:if="{{homeButton}}">
-          <view class="weui-navigation-bar__buttons weui-navigation-bar__buttons_home">
-            <view bindtap="home" class="weui-navigation-bar__btn_home_wrapper" hover-class="weui-active" aria-role="button" aria-label="首页">
-              <view class="weui-navigation-bar__button weui-navigation-bar__btn_home">
-                home
-              </view>
-            </view>
-          </view>
-        </block>
+    <view wx:if="{{back}}" class='bangumi-navigation-bar__left' style="{{leftWidth}}">
+      <!-- 返回上一页 -->
+      <block>
+        <view bindtap="back" class="bangumi-navigation-bar__back" hover-class="bangumi-active" hover-stay-time="100" aria-role="button" aria-label="返回">
+          <image class="icon-back" src="data:image/svg+xml;charset=utf-8;base64,ICA8c3ZnIHQ9IjE3MTI1NjAzNDcwMDciIGNsYXNzPSJpY29uIiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcC1pZD0iMTQ1NSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyIj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik02MTQuMjEzODE4IDcxLjgxOTYzNmE1OC4xODE4MTggNTguMTgxODE4IDAgMCAxIDc3Ljk0MDM2NCA4Ni4zMTg1NDZsLTMuMDk1MjczIDIuNzkyNzI3LTM3OS44ODA3MjcgMzE5LjA5MjM2NGEzNC45MDkwOTEgMzQuOTA5MDkxIDAgMCAwLTQuMjgyMTgyIDQ5LjE5ODU0NWwxLjg2MTgxOCAyLjAyNDcyNyAxLjk3ODE4MiAxLjg2MTgxOSAzODEuMDIxMDkxIDMzMC41ODkwOTFBNTguMTgxODE4IDU4LjE4MTgxOCAwIDAgMSA2MTYuNzUwNTQ1IDk1NC4xODE4MThsLTMuMjU4MTgxLTIuNjI5ODE4TDIzMi40OTQ1NDUgNjIxLjAzMjcyN2ExNTEuMjcyNzI3IDE1MS4yNzI3MjcgMCAwIDEtMi41Ni0yMjYuMjgwNzI3bDQuMzk4NTQ2LTMuODE2NzI3TDYxNC4yMTM4MTggNzEuODE5NjM2eiIgZmlsbD0iIzI4MkMzMyIgcC1pZD0iMTQ1NiI+PC9wYXRoPgogICAgICAgICAgICAgIDwvc3ZnPg==" />
+        </view>
       </block>
-      <block wx:else>
-        <slot name="left"></slot>
-      </block>
+
     </view>
 
     <!-- 标题 -->
-    <view class='weui-navigation-bar__center'>
-      <view wx:if="{{loading}}" class="weui-navigation-bar__loading" aria-role="alert">
-        <view class="weui-loading" aria-role="img" aria-label="加载中"></view>
-      </view>
-      <block wx:if="{{title}}">
-        <text>{{title}}</text>
-      </block>
-      <block wx:else>
-        <slot name="center"></slot>
+    <view class='bangumi-navigation-bar__center'>
+      <block>
+        <view class="title" style="{{ back ? '' : ' padding-left: 12px' }}">
+          <text>等你走过的路</text>
+        </view>
       </block>
     </view>
 
-    <!-- 右侧留空 -->
-    <view class='weui-navigation-bar__right'>
-      <slot name="right"></slot>
-    </view>
   </view>
 </view>

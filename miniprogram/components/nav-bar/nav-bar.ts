@@ -1,6 +1,6 @@
 // components/home-bar/home-bar.ts
 
-import type HomeBar from "../../types/home-bar"
+import type HomeBar from "../../types/nav-bar"
 
 Component({
   /**
