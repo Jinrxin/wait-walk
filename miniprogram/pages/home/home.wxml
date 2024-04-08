@@ -10,4 +10,8 @@
   <view class="bangumi-calendar__navigation">
     <calendar-bar active-index="{{ activeIndex }}" bind:calendarChange="calendarChange"></calendar-bar>
   </view>
+  <!-- Tip提示 -->
+  <view class="bangumi-home__tip">
+    <text>提示：日本动画播放时间为当地时间，可能与国内平台播出时间相差一天</text>
+  </view>
 </view>
