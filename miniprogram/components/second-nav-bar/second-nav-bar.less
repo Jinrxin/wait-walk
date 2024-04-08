@@ -1,13 +1,15 @@
 /* components/second-nav-bar/second-nav-bar.wxss */
+@import "../../assets/less/global.less";
 
 .second-navigation {
-  --height: 58px;
+  --height: 50px;
 }
 
 .second-navigation {
   position: relative;
   width: 100%;
   height: var(--height);
+  border-bottom: 1px @color-gray solid;
 
   &__container {
     position: relative;
@@ -25,24 +27,43 @@
     justify-content: center;
     flex: 1;
     height: 100%;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
   }
 
   &__search {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     right: calc(var(--height) - 8px);
     width: calc(var(--height) - 8px);
     height: var(--height);
-    line-height: var(--height);
-    text-align: center;
+
+    .icon-search {
+      width: 18px;
+      height: 18px;
+      fill: @color-pink;
+      transform: translateY(2px);
+      // margin: 0 auto;
+      // margin-top: 50%;
+      // transform: translateY(-50%);
+    }
   }
 
   &__menu {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: calc(var(--height) - 8px);
     height: var(--height);
-    line-height: var(--height);
-    text-align: center;
+
+    .icon-menu {
+      width: 24px;
+      height: 24px;
+      fill: @color-pink;
+      transform: translateY(2px);
+    }
   }
 }

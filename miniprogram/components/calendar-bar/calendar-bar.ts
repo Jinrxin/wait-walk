@@ -46,7 +46,7 @@ Component({
           },
           lineStyle: `width: ${
             (res.windowWidth / this.data.navList.length) * 0.7
-          }px; background: black;`,
+          }px;`,
         });
       } catch (e) {
         // Do something when catch error

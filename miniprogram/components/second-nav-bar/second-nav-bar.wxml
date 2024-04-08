@@ -8,11 +8,11 @@
     </view>
     <!-- 搜索 -->
     <view class="second-navigation__search">
-      <text>搜索</text>
+      <image class="icon-search" src="../../assets/svg/search.svg" />
     </view>
     <!-- 菜单 -->
     <view class="second-navigation__menu">
-      <text>菜单</text>
+      <image class="icon-menu" src="../../assets/svg/menu.svg" />
     </view>
   </view>
 </view>
