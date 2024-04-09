@@ -7,6 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    dayOfWeek: {
+      type: Number,
+      value: 0,
+    },
     activeIndex: {
       type: Number,
       value: 0,
@@ -18,13 +22,13 @@ Component({
    */
   data: {
     navList: <CalendarBar[]>[
-      { id: 1, name: "周一" },
-      { id: 2, name: "周二" },
-      { id: 3, name: "周三" },
-      { id: 4, name: "周四" },
-      { id: 5, name: "周五" },
-      { id: 6, name: "周六" },
-      { id: 7, name: "周日" },
+      { id: 1, name: "周日" },
+      { id: 2, name: "周一" },
+      { id: 3, name: "周二" },
+      { id: 4, name: "周三" },
+      { id: 5, name: "周四" },
+      { id: 6, name: "周五" },
+      { id: 7, name: "周六" },
     ],
     winRect: {
       width: 0,

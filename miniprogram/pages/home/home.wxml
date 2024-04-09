@@ -8,19 +8,17 @@
   </view>
   <!-- 日期导航 -->
   <view class="bangumi-calendar__navigation">
-    <calendar-bar active-index="{{ activeIndex }}" bind:calendarChange="calendarChange"></calendar-bar>
+    <calendar-bar active-index="{{ activeIndex }}" day-of-week="{{dayOfWeek}}" bind:calendarChange="calendarChange"></calendar-bar>
   </view>
   <!-- Tip提示 -->
   <view class="bangumi-home__tip">
     <text>提示：日本动画播放时间为当地时间，可能与国内平台播出时间相差一天</text>
   </view>
   <!-- 每日动漫列表 -->
-  <scroll-view class="bangumi-home__list" style="{{containerHeight}}" scroll-y>
+  <scroll-view class="bangumi-home__list" style="{{containerHeight}}" scroll-y scroll-top="{{scrollTop}}" show-scrollbar="{{false}}" enhanced="{{true}}">
     <view class="bangumi-home__list-container">
-      <!-- 动漫卡片 封装组件 -->
-      <view wx:for="{{50}}" wx:key="{{index}}" class="bangumi-card">
-        动漫
-      </view>
+      <!-- 动漫卡片-->
+      <bangumi-card wx:for="{{bangumiCalendar[activeIndex].items}}" wx:key="index" bangumi="{{item}}"></bangumi-card>
     </view>
   </scroll-view>
 </view>
