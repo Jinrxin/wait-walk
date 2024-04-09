@@ -1,7 +1,7 @@
 <!-- 顶部导航 -->
 <navigation-bar title="等你走过的路" back="{{ false }}" color="black" background="#FFF"></navigation-bar>
 <!--首页 -->
-<view class="bangumi-home">
+<view class="bangumi-home" style="{{homeHeight}}">
   <!-- 二级导航 -->
   <view class="bangumi-second__navigation">
     <second-nav-bar></second-nav-bar>
@@ -14,4 +14,13 @@
   <view class="bangumi-home__tip">
     <text>提示：日本动画播放时间为当地时间，可能与国内平台播出时间相差一天</text>
   </view>
+  <!-- 每日动漫列表 -->
+  <scroll-view class="bangumi-home__list" style="{{containerHeight}}" scroll-y>
+    <view class="bangumi-home__list-container">
+      <!-- 动漫卡片 封装组件 -->
+      <view wx:for="{{50}}" wx:key="{{index}}" class="bangumi-card">
+        动漫
+      </view>
+    </view>
+  </scroll-view>
 </view>

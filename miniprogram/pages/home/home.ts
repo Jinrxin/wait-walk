@@ -9,7 +9,7 @@ Page({
 
   /**
    * 日期选择回调
-   * @param event 
+   * @param event
    */
   calendarChange(event: any) {
     const dataFromChild = event.detail.data;
@@ -21,7 +21,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {},
+  onLoad() {
+    const rect = wx.getMenuButtonBoundingClientRect();
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          // 无中生有， 初始化导航栏位置
+          homeHeight: `height: calc(${res.windowHeight}px - var(--height-navigation) - ${res.safeArea.top}px)`,
+          // containerHeight: `height: calc(${res.windowHeight}px - var(--height-navigation) - ${res.safeArea.top}px - var(--height-calender)- var(--height-second-navigation) - var(--height-tip))`,
+        });
+      },
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
