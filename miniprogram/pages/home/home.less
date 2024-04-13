@@ -4,6 +4,7 @@
 .bangumi-home {
   --height-calendar: @height-calendar;
   --height-navigation: @height-navigation;
+  --height-custom-tabbar: @height-custom-tabbar;
   --height-second-navigation: @height-second-navigation;
   // --height-second-navigation: 200px;
 
@@ -35,7 +36,7 @@
       100% - calc(var(--height-second-navigation) + var(--height-calendar)) -
         calc(var(--height-top) + 3px)
     );
-    padding: 2px 8px 32px 8px;
+    padding: 2px 8px 0px 8px;
     box-sizing: border-box;
 
     &-container {
@@ -45,6 +46,7 @@
       column-gap: 16px;
       row-gap: 12px;
       width: 100%;
+      padding-bottom: 10px;
       // height: 100%;
     }
   }

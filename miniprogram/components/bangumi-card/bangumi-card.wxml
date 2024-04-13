@@ -4,6 +4,8 @@
     <image class="bangumi-card__cover-img" src="{{bangumi.images.common}}" />
   </view>
   <view class="bangumi-card__title">
-    <text> {{bangumi.name_cn || bangumi.name}} </text>
+    <view class="bangumi-card__title__wrapper">
+      <text> {{bangumi.name_cn || bangumi.name}} </text>
+    </view>
   </view>
 </view>

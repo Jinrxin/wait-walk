@@ -36,8 +36,12 @@ Page({
       url:
         "https://npm.onmicrosoft.cn/bangumi-database@0.0.11/dist/calendar.json",
       success(res: RequestResult<Calendar[]>) {
+        const sunday = res.data.slice(6, 7);
+        const calendar: Calendar[] = [...sunday, ...res.data.slice(0, 6)];
+        console.log(calendar);
+
         that.setData({
-          bangumiCalendar: res.data,
+          bangumiCalendar: calendar,
         });
       },
     });
