@@ -61,8 +61,8 @@ Component({
       event: WechatMiniprogram.TouchEvent<{ index: number }>
     ) {
       // 通过 triggerEvent 触发自定义事件，传递数据给父组件
-      const index = event.currentTarget.dataset.index;
-      this.triggerEvent("calendarChange", { data: index });
+      const index: number = event.currentTarget.dataset.index;
+      this.triggerEvent<{ data: number }>("calendarChange", { data: index });
     },
   },
 

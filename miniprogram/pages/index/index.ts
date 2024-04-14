@@ -1,73 +1,61 @@
 // pages/home/home.ts
+import { bangumiStore, bangumiBehavior } from "../../stores/bangumi.store";
 
-import type Calendar from "../../types/bangumi-calendar";
+import type { Calendar, BangumiData } from "../../types/bangumi-calendar";
 import type RequestResult from "../../types/request-result";
 
 Page({
-  /**
-   * 页面的初始数据
-   */
+  behaviors: [bangumiBehavior],
   data: {
     scrollTop: 0,
-    // 返回 0-6，0 表示星期天，1 表示星期一，以此类推
-    dayOfWeek: null as number | null,
     activeIndex: 0,
-    bangumiCalendar: [] as Calendar[],
+    dayOfWeek: null as number | null, // 返回 0-6，0 表示星期天，1 表示星期一，以此类推
   },
 
   /**
    * 日期选择回调
    * @param event
    */
-  calendarChange(event: any) {
-    const dataFromChild = event.detail.data;
+  calendarChange(event: { detail: { data: number } }) {
+    const index = event.detail.data;
     this.setData({
       scrollTop: 0,
-      activeIndex: dataFromChild,
+      activeIndex: index,
     });
   },
 
   /**
-   * 获取动漫日历
+   * 获取动漫数据
    */
-  async getCalendarData() {
-    const that = this;
+  async getBangumiData() {
     wx.request({
-      url:
-        "https://npm.onmicrosoft.cn/bangumi-database@0.0.11/dist/calendar.json",
-      success(res: RequestResult<Calendar[]>) {
-        const sunday = res.data.slice(6, 7);
-        const calendar: Calendar[] = [...sunday, ...res.data.slice(0, 6)];
-        console.log(calendar);
-
-        that.setData({
-          bangumiCalendar: calendar,
-        });
+      url: "https://npm.onmicrosoft.cn/bangumi-database@0.0/dist/data.json",
+      success(res: RequestResult<BangumiData>) {
+        bangumiStore.setBangumiData(res.data);
       },
     });
   },
-
   /**
-   * 获取今天是周几
+   * 获取动漫日历数据
    */
-  getTodayOfWeek() {
-    // 返回 0-6，0 表示星期天，1 表示星期一，以此类推
-    const today = new Date().getDay();
-    this.setData({
-      dayOfWeek: today,
+  async getCalendarData() {
+    wx.request({
+      url: "https://npm.onmicrosoft.cn/bangumi-database@0.0/dist/calendar.json",
+      success(res: RequestResult<Calendar[]>) {
+        // 获取周日的番组
+        const sunday = res.data.slice(6, 7);
+        // 获取其它日期的番组
+        const otherDays = res.data.slice(0, 6);
+        const calendar: Calendar[] = [...sunday, ...otherDays];
+        bangumiStore.setBangumiCalendar(calendar);
+      },
     });
   },
-
-  bangumiInit() {
-    this.setData({
-      activeIndex: this.data.dayOfWeek || 0,
-    });
-  },
-
   /**
-   * 生命周期函数--监听页面加载
+   * 数据初始化
    */
-  onLoad() {
+  async bangumiInit() {
+    // 页面高度计算
     wx.getSystemInfo({
       success: (res) => {
         this.setData({
@@ -75,43 +63,20 @@ Page({
         });
       },
     });
-    this.getCalendarData();
-    this.getTodayOfWeek();
-    this.bangumiInit();
+    await this.getCalendarData();
+    this.getBangumiData();
+    // 返回 0-6，0 表示星期天，1 表示星期一，以此类推
+    const today = new Date().getDay();
+    this.setData({
+      dayOfWeek: today,
+      activeIndex: today || 0,
+    });
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 生命周期函数--监听页面加载
    */
-  onReady() {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {},
+  onLoad() {
+    this.bangumiInit();
+  },
 });

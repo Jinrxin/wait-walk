@@ -4,8 +4,8 @@ interface WeekDay {
   cn: string;
   ja: string;
 }
-
-export interface BangumiItem {
+// 日历数据
+export interface BangumiItemByCalendar {
   id: number;
   url: string;
   type: number;
@@ -33,9 +33,42 @@ export interface BangumiItem {
     doing: number;
   };
 }
-
 // 日历类型
-export default interface Calendar {
+export interface Calendar {
   weekday: WeekDay;
+  items: BangumiItemByCalendar[];
+}
+
+// 总数据
+export interface BangumiItem {
+  title: string;
+  titleTranslate: {
+    "zh-Hans": [string];
+  };
+  type: string;
+  lang: string;
+  officialSite: string;
+  begin: string;
+  broadcast: string;
+  end: string;
+  comment: string;
+  sites: [
+    {
+      site: string;
+      id: string;
+    },
+    {
+      site: string;
+      id: string;
+      begin: string;
+      broadcast: string;
+    }
+  ];
+  image: string;
+}
+
+// 动漫数据类型
+export interface BangumiData {
   items: BangumiItem[];
+  calendar: Calendar[];
 }

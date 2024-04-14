@@ -7,6 +7,8 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "mobx-miniprogram": "^4.13.2",
+    "mobx-miniprogram-bindings": "^2.1.5"
   },
   "devDependencies": {
     "miniprogram-api-typings": "^3.12.2"

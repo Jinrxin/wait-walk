@@ -7,4 +7,6 @@
   <view class="bangumi-second__navigation">
     <second-nav-bar title="历史放送"></second-nav-bar>
   </view>
+  <!-- content -->
+  <view>numA: {{bangumiCalendar}}</view>
 </view>
