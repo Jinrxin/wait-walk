@@ -1,21 +1,28 @@
 {
   "pages": [
-    "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/history/history"
   ],
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#FA9DAF",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/index/index",
-      "text": "其他"
-    }]
+    "list": [
+      {
+        "text": "每日放送",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/img/calendar_64.png",
+        "selectedIconPath": "assets/img/calendar_active_64.png"
+      },
+      {
+        "text": "历史放送",
+        "pagePath": "pages/history/history",
+        "iconPath": "assets/img/history_64.png",
+        "selectedIconPath": "assets/img/history_active_64.png"
+      }
+    ]
   },
   "window": {
     "navigationBarTextStyle": "black",

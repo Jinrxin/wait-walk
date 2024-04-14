@@ -1,28 +1,24 @@
-<!--index.wxml-->
-<navigation-bar title="111" back="{{true}}" color="skyblue" background="#FFF"  home-button="{{false}}"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
-    </view>
+<!-- 顶部导航 -->
+<navigation-bar title="等你走过的路" back="{{ false }}" color="black" background="#FFF"></navigation-bar>
+<!--首页 -->
+<view class="bangumi-home" style="{{homeHeight}}">
+  <!-- 二级导航 -->
+  <view class="bangumi-second__navigation">
+    <second-nav-bar title="每日放送"></second-nav-bar>
   </view>
-</scroll-view>
+  <!-- 日期导航 -->
+  <view class="bangumi-calendar__navigation">
+    <calendar-bar active-index="{{ activeIndex }}" day-of-week="{{dayOfWeek}}" bind:calendarChange="calendarChange"></calendar-bar>
+  </view>
+  <!-- Tip提示 -->
+  <view class="bangumi-home__tip">
+    <text>提示：日本动画播放时间为当地时间，可能与国内平台播出时间相差一天</text>
+  </view>
+  <!-- 每日动漫列表 -->
+  <scroll-view class="bangumi-home__list" style="{{containerHeight}}" scroll-y scroll-top="{{scrollTop}}" show-scrollbar="{{false}}" enhanced="{{true}}">
+    <view class="bangumi-home__list-container">
+      <!-- 动漫卡片-->
+      <bangumi-card wx:for="{{bangumiCalendar[activeIndex].items}}" wx:key="index" bangumi="{{item}}"></bangumi-card>
+    </view>
+  </scroll-view>
+</view>

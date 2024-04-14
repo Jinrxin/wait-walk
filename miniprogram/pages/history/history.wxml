@@ -1,0 +1,10 @@
+<!--pages/history/history.wxml-->
+<!-- 顶部导航 -->
+<navigation-bar title="等你走过的路" back="{{ false }}" color="black" background="#FFF"></navigation-bar>
+<!--首页 -->
+<view class="bangumi-home" style="{{homeHeight}}">
+  <!-- 二级导航 -->
+  <view class="bangumi-second__navigation">
+    <second-nav-bar title="历史放送"></second-nav-bar>
+  </view>
+</view>
