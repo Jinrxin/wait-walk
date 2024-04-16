@@ -1,14 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
     "pages/history/history"
   ],
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#FA9DAF",
     "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#FFFFFF",
     "list": [
       {
         "text": "每日放送",

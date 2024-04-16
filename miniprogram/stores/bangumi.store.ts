@@ -38,7 +38,7 @@ export const bangumiBehavior = BehaviorWithStore({
   },
   pageLifetimes: {
     show: function () {
-      console.log(bangumiStore);
+      // console.log(bangumiStore);
     },
   },
 });

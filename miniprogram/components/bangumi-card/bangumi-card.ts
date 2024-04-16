@@ -1,6 +1,6 @@
 // components/bangumi-card/bangumi-card.ts
 
-import type BangumiItem from "../../types/bangumi-calendar";
+import type { BangumiItemByCalendar } from "../../types/bangumi-calendar";
 
 Component({
   /**
@@ -9,7 +9,7 @@ Component({
   properties: {
     bangumi: {
       type: Object,
-      value: {} as BangumiItem,
+      value: {} as BangumiItemByCalendar,
     },
   },
 

@@ -1,25 +1,17 @@
 // pages/history/history.ts
-import { bangumiStore, bangumiBehavior } from "../../stores/bangumi.store";
+import { bangumiBehavior } from "../../stores/bangumi.store";
 
 Page({
   behaviors: [bangumiBehavior],
   /**
    * 页面的初始数据
    */
-  data: {
-    numC: 3,
-  },
-
-  readStore() {
-    console.log(this.data, bangumiStore);
-  },
+  data: {},
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-    this.readStore();
-  },
+  onLoad() {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
