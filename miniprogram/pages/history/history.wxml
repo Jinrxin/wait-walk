@@ -8,5 +8,5 @@
     <second-nav-bar title="历史放送"></second-nav-bar>
   </view>
   <!-- content -->
-  <view></view>
+  <view>历史放送</view>
 </view>

@@ -32,6 +32,33 @@ export interface BangumiItemByCalendar {
   collection: {
     doing: number;
   };
+  data: {
+    type: string;
+    lang: string;
+    officialSite: string;
+    begin: string;
+    broadcast: string;
+    tokyoTime: string;
+    shanghaiTime: string;
+    isNextDay: boolean;
+  };
+  episodes: number;
+  nextEpisode: number | string;
+  latestEpisode: {
+    airdate: string;
+    name: string;
+    name_cn: string;
+    duration: string;
+    desc: string;
+    ep: number | string;
+    sort: number;
+    id: number;
+    subject_id: number;
+    comment: number;
+    type: number;
+    disc: number;
+    duration_seconds: number;
+  };
 }
 // 日历类型
 export interface Calendar {

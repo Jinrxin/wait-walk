@@ -15,9 +15,6 @@ export const bangumiStore = observable({
 
   // 番剧放送日历
   // get bangumiCalendar() {
-  //   if (!this.bangumiData.calendar) return [];
-
-  //   return calendar;
   // },
 
   // 动漫数据合集
@@ -26,6 +23,20 @@ export const bangumiStore = observable({
   }),
   // 动漫放送日历
   setBangumiCalendar: action((data: Calendar[]) => {
+    data.forEach((day) => {
+      day.items.forEach((item) => {
+        if (item.data) {
+          item.data.shanghaiTime = item.data.shanghaiTime
+            .split(" ")[1]
+            .substring(0, 5);
+        }
+        if (item.nextEpisode) {
+          item.nextEpisode = item.nextEpisode
+            .toString()
+            .padStart(2, "0");
+        }
+      });
+    });
     bangumiStore.bangumiCalendar = data;
   }),
 });

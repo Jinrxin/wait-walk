@@ -29,7 +29,7 @@ Page({
    */
   async getBangumiData() {
     wx.request({
-      url: "https://npm.onmicrosoft.cn/bangumi-database@0.0/dist/data.json",
+      url: "https://npm.onmicrosoft.cn/bangumi-database@latest/dist/data.json",
       success(res: RequestResult<BangumiData>) {
         bangumiStore.setBangumiData(res.data);
       },
@@ -40,7 +40,8 @@ Page({
    */
   async getCalendarData() {
     wx.request({
-      url: "https://npm.onmicrosoft.cn/bangumi-database@0.0/dist/calendar.json",
+      url:
+        "https://npm.onmicrosoft.cn/bangumi-database@latest/dist/calendar.json",
       success(res: RequestResult<Calendar[]>) {
         // 获取周日的番组
         const sunday = res.data.slice(6, 7);
@@ -64,7 +65,7 @@ Page({
       },
     });
     await this.getCalendarData();
-    this.getBangumiData();
+    await this.getBangumiData();
     // 返回 0-6，0 表示星期天，1 表示星期一，以此类推
     const today = new Date().getDay();
     this.setData({

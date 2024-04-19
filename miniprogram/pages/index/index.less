@@ -7,10 +7,12 @@
   --height-custom-tabbar: @height-custom-tabbar;
   --height-second-navigation: @height-second-navigation;
   // --height-second-navigation: 200px;
-
   --height-top: 58px;
+  --home-recommend-columns: 6;
 
-  --home-recommend-columns: 3;
+  @media screen and (max-width: 600px) {
+    --home-recommend-columns: 3;
+  }
 }
 
 .bangumi-home {

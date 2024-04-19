@@ -1,4 +1,5 @@
 /* components/bangumi-card/bangumi-card.wxss */
+@import "../../assets/less/global.less";
 
 .bangumi-card {
   position: relative;
@@ -13,6 +14,55 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  &__mask {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 80%;
+
+    &__info {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      width: fit-content;
+      box-sizing: border-box;
+      font-size: 12px;
+      opacity: 0.9;
+      color: rgb(255, 255, 255);
+    }
+
+    .airtime {
+      position: relative;
+      padding: 0 3px;
+      box-sizing: border-box;
+      background-color: @color-pink;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 15%;
+        right: 0;
+        height: 70%;
+        width: 1px;
+        background-color: rgba(255, 255, 255, 0.42);
+      }
+    }
+
+    .episode {
+      position: relative;
+      padding: 0 2px;
+      box-sizing: border-box;
+      background-color: @color-pink;
+    }
+
+    .next-day {
+      .airtime {
+        background-color: rgb(171, 216, 255);
+      }
     }
   }
 

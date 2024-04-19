@@ -1,7 +1,17 @@
 <!--components/bangumi-card/bangumi-card.wxml-->
 <view class="bangumi-card">
   <view class="bangumi-card__cover">
-    <image class="bangumi-card__cover-img" src="{{bangumi.images.common}}" />
+    <view class="bangumi-card__mask">
+      <view class="bangumi-card__mask__info {{ bangumi.data.isNextDay ? 'next-day' : '' }}">
+        <view wx:if="{{bangumi.data}}" class="airtime">
+          {{ bangumi.data.shanghaiTime }}
+        </view>
+        <view wx:if="{{bangumi.nextEpisode}}" class="episode">
+          {{ bangumi.nextEpisode  }} 集
+        </view>
+      </view>
+    </view>
+    <image class="bangumi-card__cover-img" src="{{bangumi.images.common || bangumi.images.large}}" />
   </view>
   <view class="bangumi-card__title">
     <view class="bangumi-card__title__wrapper">
