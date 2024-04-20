@@ -9,7 +9,7 @@
     </view>
     <view class="bangumi-card" slot="fallback">
       <view class="bangumi-card__cover">
-        <view class="bangumi-card__mask">
+        <view wx:if="{{!loading}}" class="bangumi-card__mask">
           <view class="bangumi-card__mask__info {{ bangumi.data.isNextDay ? 'next-day' : '' }}">
             <view wx:if="{{bangumi.data}}" class="airtime">
               {{ bangumi.data.shanghaiTime }}
@@ -19,7 +19,7 @@
             </view>
           </view>
         </view>
-        <image class="bangumi-card__cover-img" src="{{bangumi.images.common || bangumi.images.large || '../../assets/img/error.webp'}}" bindload="load"/>
+        <image class="bangumi-card__cover-img" src="{{bangumi.images.large ||  bangumi.images.common || '../../assets/img/error.webp'}}" bindload="load" binderror="error" />
       </view>
       <view class="bangumi-card__title">
         <view class="bangumi-card__title__wrapper">

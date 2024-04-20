@@ -10,6 +10,14 @@ Component({
     bangumi: {
       type: Object,
       value: {} as BangumiItemByCalendar,
+      observer: function () {
+        this.setData({
+          loading: true,
+        });
+      },
+      // 箭头函数无this
+      // observer: function(newValue, oldValue){
+      // }
     },
   },
 
@@ -25,6 +33,13 @@ Component({
    */
   methods: {
     load() {
+      setTimeout(() => {
+        this.setData({
+          loading: false,
+        });
+      }, 100);
+    },
+    error() {
       this.setData({
         loading: false,
       });
