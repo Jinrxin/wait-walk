@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "skeleton": "/components/skeleton/skeleton",
+    "skeleton-item": "/components/skeleton-item/skeleton-item"
+  }
 }

@@ -1,0 +1,13 @@
+<!--components/skeleton/skeleton.wxml-->
+
+<!-- 骨架屏 -->
+<block wx:if="{{loading}}">
+  <view class="skeleton {{ animated ? 'animated': '' }}">
+    <slot name="skeleton"> </slot>
+  </view>
+</block>
+
+<!-- 原始数据 -->
+<view style="{{ loading ? 'display: none' : '' }}">
+  <slot name="fallback" v-bind="$attrs" />
+</view>

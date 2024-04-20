@@ -1,0 +1,2 @@
+<!--components/skeleton-item/skeleton-item.wxml-->
+<view class="skeleton-item" style="{{ style }}"></view>

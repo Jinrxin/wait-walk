@@ -1,21 +1,32 @@
 <!--components/bangumi-card/bangumi-card.wxml-->
 <view class="bangumi-card">
-  <view class="bangumi-card__cover">
-    <view class="bangumi-card__mask">
-      <view class="bangumi-card__mask__info {{ bangumi.data.isNextDay ? 'next-day' : '' }}">
-        <view wx:if="{{bangumi.data}}" class="airtime">
-          {{ bangumi.data.shanghaiTime }}
+  <skeleton loading="{{ loading }}">
+    <!-- 骨架屏 -->
+    <view class="bangumi-card" slot="skeleton">
+      <skeleton-item style="width: 100%; height: 70%"></skeleton-item>
+      <skeleton-item style="width: 100%; height: 8%"></skeleton-item>
+      <skeleton-item style="width: 80%; height: 8%; box-sizing: border-box; padding-right: 20%;"></skeleton-item>
+    </view>
+    <view class="bangumi-card" slot="fallback">
+      <view class="bangumi-card__cover">
+        <view class="bangumi-card__mask">
+          <view class="bangumi-card__mask__info {{ bangumi.data.isNextDay ? 'next-day' : '' }}">
+            <view wx:if="{{bangumi.data}}" class="airtime">
+              {{ bangumi.data.shanghaiTime }}
+            </view>
+            <view wx:if="{{bangumi.nextEpisode}}" class="episode">
+              {{ bangumi.nextEpisode  }} 集
+            </view>
+          </view>
         </view>
-        <view wx:if="{{bangumi.nextEpisode}}" class="episode">
-          {{ bangumi.nextEpisode  }} 集
+        <image class="bangumi-card__cover-img" src="{{bangumi.images.common || bangumi.images.large || '../../assets/img/error.webp'}}" bindload="load"/>
+      </view>
+      <view class="bangumi-card__title">
+        <view class="bangumi-card__title__wrapper">
+          <text> {{bangumi.name_cn || bangumi.name}} </text>
         </view>
       </view>
     </view>
-    <image class="bangumi-card__cover-img" src="{{bangumi.images.common || bangumi.images.large}}" />
-  </view>
-  <view class="bangumi-card__title">
-    <view class="bangumi-card__title__wrapper">
-      <text> {{bangumi.name_cn || bangumi.name}} </text>
-    </view>
-  </view>
+  </skeleton>
+
 </view>

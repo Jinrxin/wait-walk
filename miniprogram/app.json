@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/detail/detail"
   ],
   "tabBar": {
     "color": "#7A7E83",
