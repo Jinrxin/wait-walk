@@ -1,33 +1,13 @@
 import { bangumiBehavior } from "../../stores/bangumi.store";
-import type RequestResult from "../../types/request-result";
-import type { Subject } from "../../types/subject";
 
 interface BangumiDetail {
   id: string | null;
-  subject: Subject;
 }
 
 Page({
   behaviors: [bangumiBehavior],
   data: <BangumiDetail>{
     id: null,
-    subject: {},
-  },
-
-  /**
-   * 获取动漫信息
-   */
-  async getBangumiSubject(id: number) {
-    const that = this;
-    wx.request({
-      url: `https://npm.onmicrosoft.cn/bangumi-database@0.2.9/dist/subject/${id}.json`,
-      success(res: RequestResult<Subject>) {
-        that.setData({
-          subject: res.data,
-          background: `background-image: url(${res.data.images.large})`,
-        });
-      },
-    });
   },
 
   /**
@@ -53,8 +33,6 @@ Page({
     this.setData({
       id: query.id,
     });
-    // if (!query.id) return;
-    this.getBangumiSubject(Number(query.id) || 372010);
     // console.log('id', JSON.parse(options.id))
   },
 });

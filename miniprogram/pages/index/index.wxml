@@ -18,7 +18,7 @@
   <scroll-view class="bangumi-home__list" style="{{containerHeight}}" scroll-y scroll-top="{{scrollTop}}" show-scrollbar="{{false}}" enhanced="{{true}}">
     <view class="bangumi-home__list-container">
       <!-- 动漫卡片-->
-      <bangumi-card wx:for="{{bangumiCalendar[activeIndex].items}}" wx:key="index" bangumi="{{item}}"></bangumi-card>
+      <bangumi-card wx:for="{{bangumiCalendar[activeIndex].items}}" wx:key="index" bangumi="{{item}}" bind:triggerTap="todDetail"></bangumi-card>
     </view>
   </scroll-view>
 </view>

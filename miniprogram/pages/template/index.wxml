@@ -1,0 +1,9 @@
+<!-- 顶部导航 -->
+<navigation-bar title="等你走过的路" back="{{ false }}" color="black" background="#FFF"></navigation-bar>
+<!--首页 -->
+<view class="template" style="{{homeHeight}}">
+  <!-- 二级导航 -->
+  <view class="template-second__navigation">
+    <second-nav-bar title="标题"></second-nav-bar>
+  </view>
+</view>

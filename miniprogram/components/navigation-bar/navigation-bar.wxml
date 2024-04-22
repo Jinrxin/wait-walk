@@ -17,7 +17,7 @@
     <view class='bangumi-navigation-bar__center'>
       <block>
         <view class="title" style="{{ back ? '' : ' padding-left: 12px' }}">
-          <text>等你走过的路</text>
+          <text>{{title}}</text>
         </view>
       </block>
     </view>

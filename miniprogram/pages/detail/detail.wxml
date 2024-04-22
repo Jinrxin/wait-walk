@@ -1,2 +1,32 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<!-- 顶部导航 -->
+<navigation-bar title="首页" back="{{ true }}" color="black" background="#FFF"></navigation-bar>
+<!--首页 -->
+<view class="detail" style="{{height}}">
+  <!-- 二级导航 -->
+  <view class="detail-second__navigation">
+    <second-nav-bar title="标题"></second-nav-bar>
+  </view>
+  <!-- 详情信息 -->
+  <scroll-view class="detail-container" scroll-y>
+    <view class="detail-wrap">
+      <!-- 横幅 -->
+      <view class="detail-banner">
+        <view class="detail-banner__mask" style="{{background}}"></view>
+        <view class="detail-banner__left">
+          <image class="cover" src="{{subject.images.large}}" mode="" />
+        </view>
+        <view class="detail-banner__right">
+          <text class="title">{{ subject.name_cn }}</text>
+          <!-- 放送信息 -->
+          <view class="base">
+            <view class="base-item air_date">
+              <text>放送日期</text>
+              <text>2024-04-01</text>
+            </view>
+            <view class="line"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

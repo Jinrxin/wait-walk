@@ -7,7 +7,7 @@
       <skeleton-item style="width: 100%; height: 8%"></skeleton-item>
       <skeleton-item style="width: 80%; height: 8%; box-sizing: border-box; padding-right: 20%;"></skeleton-item>
     </view>
-    <view class="bangumi-card" slot="fallback">
+    <view class="bangumi-card" slot="fallback" bindtap="tap" data-id="{{ bangumi.id }}">
       <view class="bangumi-card__cover">
         <view wx:if="{{!loading}}" class="bangumi-card__mask">
           <view class="bangumi-card__mask__info {{ bangumi.data.isNextDay ? 'next-day' : '' }}">
@@ -19,7 +19,7 @@
             </view>
           </view>
         </view>
-        <image class="bangumi-card__cover-img" src="{{bangumi.images.large ||  bangumi.images.common || '../../assets/img/error.webp'}}" bindload="load" binderror="error" />
+        <image class="bangumi-card__cover-img" src="{{bangumi.images.common ||  bangumi.images.large || '../../assets/img/error.webp'}}" bindload="load" binderror="error" />
       </view>
       <view class="bangumi-card__title">
         <view class="bangumi-card__title__wrapper">

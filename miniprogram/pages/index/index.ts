@@ -25,6 +25,16 @@ Page({
   },
 
   /**
+   * 跳转详情页
+   */
+  todDetail(event: { detail: { data: number } }) {
+    const id = event.detail.data;
+    wx.navigateTo({
+      url: `/pages/detail/detail?id=${id}`,
+    });
+  },
+
+  /**
    * 获取动漫数据
    */
   async getBangumiData() {

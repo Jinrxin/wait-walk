@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/detail/detail",
     "pages/index/index",
     "pages/history/history",
-    "pages/detail/detail"
+    "pages/template/index"
   ],
   "tabBar": {
     "color": "#7A7E83",

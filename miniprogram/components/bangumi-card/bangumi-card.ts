@@ -44,5 +44,12 @@ Component({
         loading: false,
       });
     },
+    tap(
+      event: WechatMiniprogram.TouchEvent<{ id: number }>
+    ) {
+      // 通过 triggerEvent 触发自定义事件，传递数据给父组件
+      const id: number  = event.currentTarget.dataset.id;    
+      this.triggerEvent<{ data: number }>("triggerTap", { data: id });
+    },
   },
 });
