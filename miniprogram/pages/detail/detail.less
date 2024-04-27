@@ -9,6 +9,8 @@
   --height-top: 58px;
   --home-recommend-columns: 6;
 
+  --height-detail-nav: @height-detail-nav;
+
   @media screen and (max-width: 600px) {
     --home-recommend-columns: 3;
   }
@@ -19,11 +21,11 @@
 
   &-container {
     position: relative;
-    height: calc(100% - var(--height-second-navigation) - 2px);
+    height: calc(100% - 2px);
   }
 
   &-wrap {
-    height: 1000px;
+    height: fit-content;
   }
 }
 
@@ -118,5 +120,15 @@
 .detail-nav {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: @height-detail-nav;
+}
+
+.detail-content{
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+
+  text-align: justify;
 }

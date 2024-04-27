@@ -1,4 +1,5 @@
 import { bangumiBehavior } from "../../stores/bangumi.store";
+import { Character } from "../../types/character";
 import type RequestResult from "../../types/request-result";
 import type { Subject } from "../../types/subject";
 
@@ -16,8 +17,8 @@ Page({
     subject: {},
   },
 
-    /**
-   * 
+  /**
+   *
    * @param event
    */
   detailChange(event: { detail: { data: number } }) {
@@ -27,7 +28,6 @@ Page({
       index: index,
     });
   },
-
 
   /**
    * 获取动漫信息
@@ -46,6 +46,20 @@ Page({
           subject: res.data,
           background: `background-image: url(${res.data.images.large})`,
         });
+      },
+    });
+  },
+
+  /**
+   * 获取动漫角色信息
+   * @param id 动漫ID
+   */
+  async getSubjectCharacters(id: number) {
+    const that = this;
+    wx.request({
+      url: `https://api.bgm.tv/v0/subjects/${id}/characters`,
+      success(res: RequestResult<Character>) {
+        console.log(res.data);
       },
     });
   },
@@ -75,6 +89,8 @@ Page({
     });
     // if (!query.id) return;
     this.getBangumiSubject(Number(query.id) || 372010);
+    // this.getSubjectCharacters(Number(query.id) || 372010);
+    
     // console.log('id', JSON.parse(options.id))
   },
 });

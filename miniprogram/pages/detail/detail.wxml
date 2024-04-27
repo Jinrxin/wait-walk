@@ -40,7 +40,25 @@
       </view>
       <!-- 内容 -->
       <view class="detail-content">
-        <text>{{index}}</text>
+        <!-- 简介 -->
+        <view wx:if="{{index === 0}}" class="detail-content__boun">
+          <text> 剧情简介: \n\n</text>
+          <text>{{ subject.summary }}</text>
+        </view>
+        <!-- 人物 -->
+        <view wx:if="{{index === 1}}" class="detail-content__characters">
+          <view class="characters-item">
+            人物
+          </view>
+        </view>
+        <!-- 放送 -->
+        <view wx:if="{{index === 2}}" class="detail-content__characters">
+          放送
+        </view>
+        <!-- 制作 -->
+        <view wx:if="{{index === 3}}" class="detail-content__characters">
+          制作
+        </view>
       </view>
     </view>
   </scroll-view>

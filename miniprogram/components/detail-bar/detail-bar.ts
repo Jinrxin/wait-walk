@@ -15,8 +15,8 @@ Component({
   data: {
     navList: [
       { id: 1, name: "简介" },
-      { id: 2, name: "放送" },
-      { id: 3, name: "角色" },
+      { id: 2, name: "角色" },
+      { id: 3, name: "放送" },
       { id: 4, name: "制作" },
     ],
     winRect: {
@@ -39,7 +39,7 @@ Component({
             width: Number(res.windowWidth.toFixed(2)),
           },
           lineStyle: `width: ${
-            ((res.windowWidth - 20) / this.data.navList.length) * 0.5
+            ((res.windowWidth - 12) / this.data.navList.length) * 0.5
           }px;`,
         });
       } catch (e) {

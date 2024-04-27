@@ -9,7 +9,7 @@
     </block>
   </view>
   <!-- 提示线 -->
-  <view class="home-bar__line" style=" width: {{ (winRect.width - 20) / navList.length }}px; transform: translateX({{ (winRect.width - 20) / navList.length  * (activeIndex || 0)}}px) ">
+  <view class="home-bar__line" style=" width: {{ (winRect.width - 12) / navList.length }}px; transform: translateX({{ (winRect.width - 12) / navList.length  * (activeIndex || 0)}}px) ">
     <view class="line" style="{{ lineStyle }}"></view>
   </view>
 </view>
