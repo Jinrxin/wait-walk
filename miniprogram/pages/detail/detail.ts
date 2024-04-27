@@ -20,9 +20,14 @@ Page({
   async getBangumiSubject(id: number) {
     const that = this;
     wx.request({
-      url: `https://npm.onmicrosoft.cn/bangumi-database@0.2.9/dist/subject/${id}.json`,
+      url: `https://npm.onmicrosoft.cn/bangumi-database@latest/dist/subject/${id}.json`,
       success(res: RequestResult<Subject>) {
+        const tags = res.data.tags.sort((a, b) => b.count - a.count );
+        const showTags = tags.filter((tag) => {
+         return tag.name.length > 1 && tag.name.length < 4;
+        });        
         that.setData({
+          tags: showTags.slice(0, 4),
           subject: res.data,
           background: `background-image: url(${res.data.images.large})`,
         });

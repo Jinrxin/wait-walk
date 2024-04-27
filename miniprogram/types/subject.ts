@@ -1,16 +1,37 @@
 // 动漫主题类型
+interface SubjectTag {
+  name: string;
+  count: number;
+}
+
+interface SubjectInfobox {
+  key: string;
+  value: string;
+}
+
 export interface Subject {
   id: number;
-  url: string;
+  eps: number;
+  volumes: number;
+  locked: boolean;
+  nsfw: boolean;
   type: number;
+  date: string;
+  platform: string;
+  images: {
+    small: string;
+    grid: string;
+    large: string;
+    medium: string;
+    common: string;
+  };
+  summary: string;
   name: string;
   name_cn: string;
-  summary: string;
-  eps: number;
-  eps_count: number;
-  air_date: string;
-  air_weekday: number;
+  tags: SubjectTag[];
+  infobox: SubjectInfobox[];
   rating: {
+    rank: number;
     total: number;
     count: {
       "1": number;
@@ -24,21 +45,14 @@ export interface Subject {
       "9": number;
       "10": number;
     };
-    score: 7.5;
+    score: number;
   };
-  rank: 838;
-  images: {
-    large: string;
-    common: string;
-    medium: string;
-    small: string;
-    grid: string;
-  };
+  total_episodes: number;
   collection: {
+    on_hold: number;
+    dropped: number;
     wish: number;
     collect: number;
     doing: number;
-    on_hold: number;
-    dropped: number;
   };
 }

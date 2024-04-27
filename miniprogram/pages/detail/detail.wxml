@@ -1,11 +1,11 @@
 <!-- 顶部导航 -->
-<navigation-bar title="首页" back="{{ true }}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="番剧详情" back="{{ true }}" color="black" background="#FFF"></navigation-bar>
 <!--首页 -->
 <view class="detail" style="{{height}}">
   <!-- 二级导航 -->
-  <view class="detail-second__navigation">
+  <!-- <view class="detail-second__navigation">
     <second-nav-bar title="标题"></second-nav-bar>
-  </view>
+  </view> -->
   <!-- 详情信息 -->
   <scroll-view class="detail-container" scroll-y>
     <view class="detail-wrap">
@@ -17,11 +17,17 @@
         </view>
         <view class="detail-banner__right">
           <text class="title">{{ subject.name_cn }}</text>
+          <!-- tags -->
+          <view class="tags">
+            <block wx:for="{{tags}}" wx:key="index">
+              <bangumi-tag tag="{{item.name}}"></bangumi-tag>
+            </block>
+          </view>
           <!-- 放送信息 -->
           <view class="base">
             <view class="base-item air_date">
               <text>放送日期</text>
-              <text>2024-04-01</text>
+              <text>{{ subject.date }}</text>
             </view>
             <view class="line"></view>
           </view>

@@ -47,6 +47,7 @@
 
   &__left {
     width: 40%;
+    height: 100%;
     overflow: hidden;
     border-radius: 6px;
     border: white 3px solid;
@@ -78,20 +79,28 @@
       -webkit-box-orient: vertical;
     }
 
+    .tags {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 60px;
+    }
+
     .base {
       position: relative;
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-top: 8px;
       height: 60px;
+      margin-top: 8px;
 
       &-item {
         display: flex;
         flex-direction: column;
       }
 
-      .line{
+      .line {
         width: 1px;
         height: 80%;
         margin: 0 12px;
