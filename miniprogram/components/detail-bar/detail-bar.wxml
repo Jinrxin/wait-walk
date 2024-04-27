@@ -1,0 +1,15 @@
+<!--components/home-bar/home-bar.wxml-->
+<view class="home-bar">
+  <!-- 导航列表 -->
+  <view class="home-bar__swiper">
+    <block wx:for="{{navList}}" wx:key="index">
+      <view class="swiper-item" bindtap="triggerDetailChange" data-index="{{ index }}">
+        <text class="swiper-item__title {{ index === activeIndex ? 'active' : '' }}"> {{ item.name }} </text>
+      </view>
+    </block>
+  </view>
+  <!-- 提示线 -->
+  <view class="home-bar__line" style=" width: {{ (winRect.width - 20) / navList.length }}px; transform: translateX({{ (winRect.width - 20) / navList.length  * (activeIndex || 0)}}px) ">
+    <view class="line" style="{{ lineStyle }}"></view>
+  </view>
+</view>

@@ -5,14 +5,29 @@ import type { Subject } from "../../types/subject";
 interface BangumiDetail {
   id: string | null;
   subject: Subject;
+  index: number;
 }
 
 Page({
   behaviors: [bangumiBehavior],
   data: <BangumiDetail>{
     id: null,
+    index: 0,
     subject: {},
   },
+
+    /**
+   * 
+   * @param event
+   */
+  detailChange(event: { detail: { data: number } }) {
+    const index = event.detail.data;
+    this.setData({
+      // scrollTop: 0,
+      index: index,
+    });
+  },
+
 
   /**
    * 获取动漫信息
@@ -22,10 +37,10 @@ Page({
     wx.request({
       url: `https://npm.onmicrosoft.cn/bangumi-database@latest/dist/subject/${id}.json`,
       success(res: RequestResult<Subject>) {
-        const tags = res.data.tags.sort((a, b) => b.count - a.count );
+        const tags = res.data.tags.sort((a, b) => b.count - a.count);
         const showTags = tags.filter((tag) => {
-         return tag.name.length > 1 && tag.name.length < 4;
-        });        
+          return tag.name.length > 1 && tag.name.length < 4;
+        });
         that.setData({
           tags: showTags.slice(0, 4),
           subject: res.data,

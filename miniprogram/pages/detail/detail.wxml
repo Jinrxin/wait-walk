@@ -33,6 +33,15 @@
           </view>
         </view>
       </view>
+      <!-- 二级导航 -->
+      <view class="detail-nav">
+        <!-- 导航 -->
+        <detail-bar activeIndex="{{index}}" bind:detailChange="detailChange"></detail-bar>
+      </view>
+      <!-- 内容 -->
+      <view class="detail-content">
+        <text>{{index}}</text>
+      </view>
     </view>
   </scroll-view>
 </view>
