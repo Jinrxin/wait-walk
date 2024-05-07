@@ -119,9 +119,9 @@ Page({
     this.setData({
       id: query.id,
     });
-    // if (!query.id) return;
-    this.getBangumiSubject(Number(query.id) || 283643);
-    this.getSubjectCharacters(Number(query.id) || 283643);
+    if (!query.id) return;
+    this.getBangumiSubject(Number(query.id));
+    this.getSubjectCharacters(Number(query.id));
 
     // console.log('id', JSON.parse(options.id))
   },
