@@ -2,37 +2,47 @@
 <navigation-bar title="番剧详情" back="{{ true }}" color="black" background="#FFF"></navigation-bar>
 <!--首页 -->
 <view class="detail" style="{{height}}">
-  <!-- 二级导航 -->
-  <!-- <view class="detail-second__navigation">
-    <second-nav-bar title="标题"></second-nav-bar>
-  </view> -->
   <!-- 详情信息 -->
   <scroll-view class="detail-container" scroll-y>
     <view class="detail-wrap">
       <!-- 横幅 -->
-      <view class="detail-banner">
-        <view class="detail-banner__mask" style="{{background}}"></view>
-        <view class="detail-banner__left">
-          <image class="cover" src="{{subject.images.large}}" mode="" />
-        </view>
-        <view class="detail-banner__right">
-          <text class="title">{{ subject.name_cn }}</text>
-          <!-- tags -->
-          <view class="tags">
-            <block wx:for="{{tags}}" wx:key="index">
-              <bangumi-tag tag="{{item.name}}"></bangumi-tag>
-            </block>
+      <skeleton loading="{{ loading }}">
+        <!-- 骨架屏 -->
+        <view class="detail-banner" slot="skeleton">
+          <view class="detail-banner__left">
+            <skeleton-item style="width: 100%; height: 100%; border-radius: 8px;"></skeleton-item>
           </view>
-          <!-- 放送信息 -->
-          <view class="base">
-            <view class="base-item air_date">
-              <text>放送日期</text>
-              <text>{{ subject.date }}</text>
+          <view class="detail-banner__right">
+            <skeleton-item style="width: 100%; height: 12%; margin-bottom: 2%"></skeleton-item>
+            <skeleton-item style="width: 100%; height: 12%;  margin-bottom: 2%"></skeleton-item>
+            <skeleton-item style="width: 70%; height: 12%;  margin-bottom: 2%"></skeleton-item>
+            <skeleton-item style="width: 40%; height: 12%"></skeleton-item>
+          </view>
+        </view>
+        <view class="detail-banner" slot="fallback">
+          <view class="detail-banner__mask" style="{{background}}"></view>
+          <view class="detail-banner__left">
+            <image class="cover" src="{{subject.images.large}}" mode="" />
+          </view>
+          <view class="detail-banner__right">
+            <text class="title">{{ subject.name_cn }}</text>
+            <!-- tags -->
+            <view class="tags">
+              <block wx:for="{{tags}}" wx:key="index">
+                <bangumi-tag tag="{{item.name}}"></bangumi-tag>
+              </block>
             </view>
-            <view class="line"></view>
+            <!-- 放送信息 -->
+            <view class="base">
+              <view class="base-item air_date">
+                <text>放送日期</text>
+                <text>{{ subject.date }}</text>
+              </view>
+              <view class="line"></view>
+            </view>
           </view>
         </view>
-      </view>
+      </skeleton>
       <!-- 二级导航 -->
       <view class="detail-nav">
         <!-- 导航 -->
@@ -41,16 +51,59 @@
       <!-- 内容 -->
       <view class="detail-content">
         <!-- 简介 -->
-        <view wx:if="{{index === 0}}" class="detail-content__boun">
-          <text> 剧情简介: \n\n</text>
-          <text>{{ subject.summary }}</text>
-        </view>
+        <block wx:if="{{index === 0}}">
+          <!-- 横幅 -->
+          <skeleton loading="{{ loading }}">
+            <!-- 骨架屏 -->
+            <view class="detail-content__noun" slot="skeleton">
+              <skeleton-item style="width: 30%; height: 20px"></skeleton-item>
+              <text>\n</text>
+              <text>\n</text>
+              <skeleton-item style="width: 100%; height: 20px; margin-bottom: 2px"></skeleton-item>
+              <skeleton-item style="width: 100%; height: 20px;  margin-bottom: 2px"></skeleton-item>
+              <skeleton-item style="width: 70%; height: 20px;  margin-bottom: 2px"></skeleton-item>
+              <skeleton-item style="width: 40%; height: 20px"></skeleton-item>
+              <text>\n</text>
+              <text>\n</text>
+              <skeleton-item style="width: 100%; height: 20px; margin-bottom: 2px"></skeleton-item>
+              <skeleton-item style="width: 100%; height: 20px;  margin-bottom: 2px"></skeleton-item>
+              <skeleton-item style="width: 70%; height: 20px;  margin-bottom: 2px"></skeleton-item>
+              <skeleton-item style="width: 40%; height: 20px"></skeleton-item>
+            </view>
+            <view class="detail-content__noun" slot="fallback">
+              <text style="font-weight:bold"> 剧情简介: </text>
+              <text> \n</text>
+              <text> \n</text>
+              <text style="text-indent: 2em;" user-select>{{ subject.summary }}</text>
+            </view>
+          </skeleton>
+        </block>
         <!-- 人物 -->
-        <view wx:if="{{index === 1}}" class="detail-content__characters">
-          <view class="characters-item">
-            人物
+        <block wx:if="{{index === 1}}">
+          <view class="detail-content__characters">
+            <block wx:for="{{character}}" wx:key="index">
+              <view class="character-item">
+                <!-- 头像 -->
+                <view class="character-item__avatar">
+                  <image class="avatar" src="{{item.noun.avatar || item.noun.images.grid}}" mode="" />
+                </view>
+                <view class="character-item__info">
+                  <view class="name">
+                    <text>{{item.noun.name_cn || item.noun.name}}</text>
+                  </view>
+                  <view class="other">
+                    <bangumi-tag tag="{{item.noun.relation}}" color="rgb(196, 196, 196)"></bangumi-tag>
+                    <text>cv: {{item.noun.actors[0].name}}</text>
+                  </view>
+                </view>
+                <!-- 按钮 -->
+                <!-- <view class="character-item__btn">
+                  <image class="icon-arrow" src="../../assets/img/arrow_right.png" />
+                </view> -->
+              </view>
+            </block>
           </view>
-        </view>
+        </block>
         <!-- 放送 -->
         <view wx:if="{{index === 2}}" class="detail-content__characters">
           放送

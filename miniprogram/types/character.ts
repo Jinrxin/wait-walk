@@ -1,5 +1,4 @@
-// 简介
-export interface CharacterNoun {
+interface Noun {
   images: {
     small: string;
     grid: string;
@@ -7,6 +6,8 @@ export interface CharacterNoun {
     medium: string;
   };
   name: string;
+  name_cn: string | null;
+  avatar: string | null;
   relation: string;
   actors: [
     {
@@ -27,13 +28,13 @@ export interface CharacterNoun {
   type: number;
   id: number;
 }
-// 详细信息
-export interface CharacterDetail {
-  birth_mon: string | null;
+
+interface Detail {
+  birth_mon: null | string;
   gender: string;
-  birth_day: string | null;
-  birth_year: string | null;
-  blood_type: string | null;
+  birth_day: null | string;
+  birth_year: null | string;
+  blood_type: null | string;
   images: {
     small: string;
     grid: string;
@@ -49,47 +50,7 @@ export interface CharacterDetail {
     },
     {
       key: string;
-      value: [
-        {
-          k: string;
-          v: string;
-        },
-        {
-          k: string;
-          v: string;
-        },
-        {
-          k: string;
-          v: string;
-        },
-        {
-          k: string;
-          v: string;
-        },
-        {
-          k: string;
-          v: string;
-        },
-        {
-          k: string;
-          v: string;
-        }
-      ];
-    },
-    {
-      key: string;
       value: string;
-    },
-    {
-      key: string;
-      value: [
-        {
-          v: string;
-        },
-        {
-          v: string;
-        }
-      ];
     }
   ];
   stat: {
@@ -102,8 +63,12 @@ export interface CharacterDetail {
   nsfw: boolean;
 }
 
-// 角色信息
 export interface Character {
-  noun: CharacterNoun;
-  detail: CharacterDetail;
+  noun: Noun;
+  detail: Detail | null;
+}
+
+export interface CharacterList {
+  noun: Noun[];
+  detail: Detail[];
 }

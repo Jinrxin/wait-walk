@@ -1,4 +1,4 @@
 <!--components/bangumi-tag/bangumi-tag.wxml-->
-<view class="tag">
+<view class="tag" style="color:{{color}}; border-color: {{color}};">
   {{ tag }}
 </view>

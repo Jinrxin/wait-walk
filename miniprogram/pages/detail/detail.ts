@@ -1,5 +1,5 @@
 import { bangumiBehavior } from "../../stores/bangumi.store";
-import { Character } from "../../types/character";
+import { Character, CharacterList } from "../../types/character";
 import type RequestResult from "../../types/request-result";
 import type { Subject } from "../../types/subject";
 
@@ -7,6 +7,7 @@ interface BangumiDetail {
   id: string | null;
   subject: Subject;
   index: number;
+  loading: boolean;
 }
 
 Page({
@@ -15,6 +16,8 @@ Page({
     id: null,
     index: 0,
     subject: {},
+    // 加载
+    loading: true,
   },
 
   /**
@@ -39,10 +42,13 @@ Page({
       success(res: RequestResult<Subject>) {
         const tags = res.data.tags.sort((a, b) => b.count - a.count);
         const showTags = tags.filter((tag) => {
-          return tag.name.length > 1 && tag.name.length < 4;
+          return (
+            tag.name.length > 1 && tag.name.length < 4 && tag.name !== "TV"
+          );
         });
         that.setData({
-          tags: showTags.slice(0, 4),
+          loading: false,
+          tags: showTags.slice(0, 3),
           subject: res.data,
           background: `background-image: url(${res.data.images.large})`,
         });
@@ -57,9 +63,35 @@ Page({
   async getSubjectCharacters(id: number) {
     const that = this;
     wx.request({
-      url: `https://api.bgm.tv/v0/subjects/${id}/characters`,
-      success(res: RequestResult<Character>) {
-        console.log(res.data);
+      url: `https://npm.onmicrosoft.cn/bangumi-database@latest/dist/subject_charaters/${id}.json`,
+      success(res: RequestResult<CharacterList>) {
+        const characters: Character[] = [];
+        const subjectCharacters = res.data;
+        subjectCharacters.noun.forEach((item) => {
+          const detail = subjectCharacters.detail.find(
+            (ctr) => item.id === ctr.id
+          );
+          characters.push({ noun: item, detail: detail || null });
+        });
+        characters.forEach((item) => {
+          // 头像
+          item.noun.avatar =
+            "https://lain.bgm.tv/pic/crt/g/" +
+              item.noun.images.large.split("crt/l")[1] || null;
+          // 昵称
+          if (!item.detail) {
+            item.noun.name_cn = null;
+          } else {
+            const name_cn = item.detail.infobox.find(
+              (info) => info.key === "简体中文名"
+            );
+            if (name_cn) item.noun.name_cn = name_cn.value;
+            else item.noun.name_cn = null;
+          }
+        });
+        that.setData({
+          character: characters,
+        });
       },
     });
   },
@@ -88,9 +120,9 @@ Page({
       id: query.id,
     });
     // if (!query.id) return;
-    this.getBangumiSubject(Number(query.id) || 372010);
-    // this.getSubjectCharacters(Number(query.id) || 372010);
-    
+    this.getBangumiSubject(Number(query.id) || 283643);
+    this.getSubjectCharacters(Number(query.id) || 283643);
+
     // console.log('id', JSON.parse(options.id))
   },
 });

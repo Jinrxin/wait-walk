@@ -123,7 +123,7 @@
   height: @height-detail-nav;
 }
 
-.detail-content{
+.detail-content {
   position: relative;
   width: 100%;
   padding: 16px;
@@ -131,4 +131,85 @@
   box-sizing: border-box;
 
   text-align: justify;
+
+  &__noun {
+    width: 100%;
+  }
+
+  &__characters {
+    position: relative;
+    width: 100%;
+  }
+}
+
+.character-item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 20px;
+
+  &__avatar {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 8px;
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding-left: 8px;
+    box-sizing: border-box;
+    color: @color-gray-1;
+  }
+  
+
+  .name {
+    position: relative;
+    padding-bottom: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    color: @color-blue;
+    font-size: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 100%;
+      background-color: @color-gray-2;
+    }
+  }
+
+  .other {
+    font-size: 14px;
+    padding-top: 6px;
+    box-sizing: border-box;
+  }
+
+  &__btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    padding-bottom: 6px;
+    box-sizing: border-box;
+
+    .icon-arrow{
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
