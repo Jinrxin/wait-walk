@@ -3,7 +3,7 @@
 <!--首页 -->
 <view class="detail" style="{{height}}">
   <!-- 详情信息 -->
-  <scroll-view class="detail-container" scroll-y>
+  <scroll-view class="detail-container">
     <view class="detail-wrap">
       <!-- 横幅 -->
       <skeleton loading="{{ loading }}">
@@ -44,12 +44,12 @@
         </view>
       </skeleton>
       <!-- 二级导航 -->
-      <view class="detail-nav">
+      <view class="detail-nav" style="{{ loading ? 'visibility:hidden' : '' }}">
         <!-- 导航 -->
         <detail-bar activeIndex="{{index}}" bind:detailChange="detailChange"></detail-bar>
       </view>
       <!-- 内容 -->
-      <view class="detail-content">
+      <scroll-view class="detail-content" scroll-y>
         <!-- 简介 -->
         <block wx:if="{{index === 0}}">
           <!-- 横幅 -->
@@ -112,7 +112,7 @@
         <view wx:if="{{index === 3}}" class="detail-content__characters">
           制作
         </view>
-      </view>
+      </scroll-view>
     </view>
   </scroll-view>
 </view>

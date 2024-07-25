@@ -38,7 +38,7 @@ Page({
   async getBangumiSubject(id: number) {
     const that = this;
     wx.request({
-      url: `https://npm.onmicrosoft.cn/bangumi-database@latest/dist/subject/${id}.json`,
+      url: `https://unpkg.com/bangumi-database@latest/dist/subject/${id}.json`,
       success(res: RequestResult<Subject>) {
         const tags = res.data.tags.sort((a, b) => b.count - a.count);
         const showTags = tags.filter((tag) => {
@@ -63,7 +63,7 @@ Page({
   async getSubjectCharacters(id: number) {
     const that = this;
     wx.request({
-      url: `https://npm.onmicrosoft.cn/bangumi-database@latest/dist/subject_charaters/${id}.json`,
+      url: `https://unpkg.com/bangumi-database@latest/dist/subject_charaters/${id}.json`,
       success(res: RequestResult<CharacterList>) {
         const characters: Character[] = [];
         const subjectCharacters = res.data;

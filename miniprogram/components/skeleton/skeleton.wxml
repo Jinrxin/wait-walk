@@ -9,5 +9,5 @@
 
 <!-- 原始数据 -->
 <view style="{{ loading ? 'display: none' : '' }}">
-  <slot name="fallback" v-bind="$attrs" />
+  <slot name="fallback" />
 </view>

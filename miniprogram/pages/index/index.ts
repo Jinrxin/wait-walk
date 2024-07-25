@@ -40,7 +40,7 @@ Page({
    */
   async getBangumiData() {
     wx.request({
-      url: "https://npm.onmicrosoft.cn/bangumi-database@latest/dist/data.json",
+      url: "https://unpkg.com/bangumi-database@latest/dist/data.json",
       success(res: RequestResult<BangumiData>) {
         bangumiStore.setBangumiData(res.data);
       },
@@ -53,7 +53,7 @@ Page({
     const that = this;
     wx.request({
       url:
-        "https://npm.onmicrosoft.cn/bangumi-database@latest/dist/calendar.json",
+        "https://unpkg.com/bangumi-database@latest/dist/calendar.json",
       success(res: RequestResult<Calendar[]>) {
         // 获取周日的番组
         const sunday = res.data.slice(6, 7);

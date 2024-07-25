@@ -19,6 +19,17 @@
 .detail {
   position: relative;
 
+  .loading-mask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(
+      100% - calc(var(--height-second-navigation) + var(--height-calendar)) -
+        calc(var(--height-top) + 3px)
+    );
+  }
+
   &-container {
     position: relative;
     height: calc(100% - 2px);
@@ -126,6 +137,10 @@
 .detail-content {
   position: relative;
   width: 100%;
+  height: calc(
+    100vh - @height-navigation - 200px - @height-detail-nav -
+      env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
   padding: 16px;
   padding-bottom: 30px;
   box-sizing: border-box;
@@ -139,6 +154,8 @@
   &__characters {
     position: relative;
     width: 100%;
+    padding-bottom: 16px;
+    box-sizing: border-box;
   }
 }
 
@@ -171,7 +188,6 @@
     box-sizing: border-box;
     color: @color-gray-1;
   }
-  
 
   .name {
     position: relative;
@@ -198,7 +214,7 @@
     box-sizing: border-box;
   }
 
-  &__btn{
+  &__btn {
     position: relative;
     display: flex;
     align-items: center;
@@ -207,7 +223,7 @@
     padding-bottom: 6px;
     box-sizing: border-box;
 
-    .icon-arrow{
+    .icon-arrow {
       width: 24px;
       height: 24px;
     }
