@@ -7,6 +7,7 @@ import type RequestResult from "../../types/request-result";
 Page({
   behaviors: [bangumiBehavior],
   data: {
+    loading: true,
     scrollTop: 0,
     activeIndex: 0,
     dayOfWeek: null as number | null, // 返回 0-6，0 表示星期天，1 表示星期一，以此类推
@@ -49,6 +50,7 @@ Page({
    * 获取动漫日历数据
    */
   async getCalendarData() {
+    const that = this;
     wx.request({
       url:
         "https://npm.onmicrosoft.cn/bangumi-database@latest/dist/calendar.json",
@@ -59,6 +61,10 @@ Page({
         const otherDays = res.data.slice(0, 6);
         const calendar: Calendar[] = [...sunday, ...otherDays];
         bangumiStore.setBangumiCalendar(calendar);
+
+        that.setData({
+          loading: false,
+        });
       },
     });
   },

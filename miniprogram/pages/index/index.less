@@ -18,6 +18,17 @@
 .bangumi-home {
   position: relative;
 
+  .loading-mask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(
+      100% - calc(var(--height-second-navigation) + var(--height-calendar)) -
+        calc(var(--height-top) + 3px)
+    );
+  }
+
   &__tip {
     width: 100%;
     // height: auto;

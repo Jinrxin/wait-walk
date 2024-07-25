@@ -3,6 +3,7 @@
     "calendar-bar": "/components/calendar-bar/calendar-bar",
     "second-nav-bar": "/components/second-nav-bar/second-nav-bar",
     "navigation-bar": "/components/navigation-bar/navigation-bar",
-    "bangumi-card": "/components/bangumi-card/bangumi-card"
+    "bangumi-card": "/components/bangumi-card/bangumi-card",
+    "loading": "/components/loading/loading"
   }
 }

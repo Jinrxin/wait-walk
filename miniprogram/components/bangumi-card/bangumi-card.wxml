@@ -19,7 +19,7 @@
             </view>
           </view>
         </view>
-        <image class="bangumi-card__cover-img" src="{{bangumi.images.large ||  bangumi.images.common || '../../assets/img/error.webp'}}" bindload="load" binderror="error" />
+        <image class="bangumi-card__cover-img" src="{{bangumi.images.common ||  bangumi.images.large || '../../assets/img/error.webp'}}" bindload="load" binderror="error" />
       </view>
       <view class="bangumi-card__title">
         <view class="bangumi-card__title__wrapper">

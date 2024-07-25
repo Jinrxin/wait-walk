@@ -1,0 +1,56 @@
+/* components/loading/loading.wxss */
+
+.loading {
+  width: 51px;
+  height: 51px;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff;
+
+  &-anime {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(0.51);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /* see note above */
+
+    .inner,
+    .outer {
+      position: absolute;
+      border-width: 8px;
+      border-style: solid;
+      opacity: 1;
+      border-radius: 50%;
+      box-sizing: content-box;
+      animation: loading-animation 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    .inner {
+      border-color: #ffcbce;
+      animation-delay: 0s;
+    }
+
+    .outer {
+      border-color: #ffcbce;
+      animation-delay: -0.5s;
+    }
+  }
+}
+
+@keyframes loading-animation {
+  0% {
+    top: 42px;
+    left: 42px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 2px;
+    left: 2px;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+}

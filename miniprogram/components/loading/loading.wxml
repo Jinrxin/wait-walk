@@ -1,0 +1,7 @@
+<!--components/loading/loading.wxml-->
+<view class="loading">
+  <view class="loading-anime">
+    <view class="inner"></view>
+    <view class="outer"></view>
+  </view>
+</view>
