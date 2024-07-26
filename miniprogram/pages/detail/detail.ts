@@ -1,13 +1,16 @@
 import { bangumiBehavior } from "../../stores/bangumi.store";
 import { Character, CharacterList } from "../../types/character";
-import type RequestResult from "../../types/request-result";
+import { HttpStatus } from "../../common/HttpStatus";
 import type { Subject } from "../../types/subject";
+import type RequestResult from "../../types/request-result";
 
 interface BangumiDetail {
   id: string | null;
   subject: Subject;
   index: number;
   loading: boolean;
+  areaLoading: boolean;
+  characters: CharacterList[];
 }
 
 Page({
@@ -18,18 +21,22 @@ Page({
     subject: {},
     // 加载
     loading: true,
+    areaLoading: true,
   },
 
   /**
    *
    * @param event
    */
-  detailChange(event: { detail: { data: number } }) {
+  async detailChange(event: { detail: { data: number } }) {
     const index = event.detail.data;
     this.setData({
       // scrollTop: 0,
       index: index,
     });
+    if (index === 1) {
+      await this.getSubjectCharacters(Number(this.data.id));
+    }
   },
 
   /**
@@ -61,10 +68,20 @@ Page({
    * @param id 动漫ID
    */
   async getSubjectCharacters(id: number) {
+    if (this.data.characters) return;
     const that = this;
+    that.setData({
+      areaLoading: true,
+    });
     wx.request({
       url: `https://unpkg.com/bangumi-database@latest/dist/subject_charaters/${id}.json`,
       success(res: RequestResult<CharacterList>) {
+        if (res.statusCode === HttpStatus.NotFound) {
+          that.setData({
+            areaLoading: false,
+          });
+          return;
+        }
         const characters: Character[] = [];
         const subjectCharacters = res.data;
         subjectCharacters.noun.forEach((item) => {
@@ -90,6 +107,7 @@ Page({
           }
         });
         that.setData({
+          areaLoading: false,
           character: characters,
         });
       },
@@ -121,7 +139,7 @@ Page({
     });
     if (!query.id) return;
     this.getBangumiSubject(Number(query.id));
-    this.getSubjectCharacters(Number(query.id));
+    // this.getSubjectCharacters(Number(query.id));
 
     // console.log('id', JSON.parse(options.id))
   },

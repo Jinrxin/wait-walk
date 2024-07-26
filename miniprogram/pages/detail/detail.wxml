@@ -71,38 +71,53 @@
               <skeleton-item style="width: 40%; height: 20px"></skeleton-item>
             </view>
             <view class="detail-content__noun" slot="fallback">
-              <text style="font-weight:bold"> 剧情简介: </text>
-              <text> \n</text>
-              <text> \n</text>
-              <text style="text-indent: 2em;" user-select>{{ subject.summary }}</text>
+              <block wx:if="{{!subject.summary}}">
+                <text style="font-weight:bold"> 暂无 </text>
+              </block>
+              <block wx:if="{{subject.summary}}">
+                <text style="font-weight:bold"> 剧情简介: </text>
+                <text> \n</text>
+                <text> \n</text>
+                <text style="text-indent: 2em;" user-select>{{ subject.summary }}</text>
+              </block>
             </view>
           </skeleton>
         </block>
         <!-- 人物 -->
         <block wx:if="{{index === 1}}">
-          <view class="detail-content__characters">
-            <block wx:for="{{character}}" wx:key="index">
-              <view class="character-item">
-                <!-- 头像 -->
-                <view class="character-item__avatar">
-                  <image class="avatar" src="{{item.noun.avatar || item.noun.images.grid}}" mode="" />
-                </view>
-                <view class="character-item__info">
-                  <view class="name">
-                    <text>{{item.noun.name_cn || item.noun.name}}</text>
+          <block wx:if="{{areaLoading && !character}}">
+            <view class="loading-mask">
+              <loading></loading>
+            </view>
+          </block>
+          <block wx:if="{{!areaLoading && !character}}">
+            <text style="font-weight:bold"> 暂无 </text>
+          </block>
+          <block wx:if="{{!areaLoading && character}}">
+            <view class="detail-content__characters">
+              <block wx:for="{{character}}" wx:key="index">
+                <view class="character-item">
+                  <!-- 头像 -->
+                  <view class="character-item__avatar">
+                    <image class="avatar" src="{{item.noun.avatar || item.noun.images.grid}}" mode="" />
                   </view>
-                  <view class="other">
-                    <bangumi-tag tag="{{item.noun.relation}}" color="rgb(196, 196, 196)"></bangumi-tag>
-                    <text>cv: {{item.noun.actors[0].name}}</text>
+                  <view class="character-item__info">
+                    <view class="name">
+                      <text>{{item.noun.name_cn || item.noun.name}}</text>
+                    </view>
+                    <view class="other">
+                      <bangumi-tag tag="{{item.noun.relation}}" color="rgb(196, 196, 196)"></bangumi-tag>
+                      <text>cv: {{item.noun.actors[0].name}}</text>
+                    </view>
                   </view>
-                </view>
-                <!-- 按钮 -->
-                <!-- <view class="character-item__btn">
+                  <!-- 按钮 -->
+                  <!-- <view class="character-item__btn">
                   <image class="icon-arrow" src="../../assets/img/arrow_right.png" />
                 </view> -->
-              </view>
-            </block>
-          </view>
+                </view>
+              </block>
+            </view>
+          </block>
         </block>
         <!-- 放送 -->
         <view wx:if="{{index === 2}}" class="detail-content__characters">
